@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,7 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Brand\BrandCreate.cs" />
+    <Compile Include="Brand\BrandDetail.cs" />
+    <Compile Include="Brand\BrandEdit.cs" />
+    <Compile Include="Brand\BrandListItem.cs" />
+    <Compile Include="Category\CategoryCreate.cs" />
+    <Compile Include="Category\CategoryDetail.cs" />
+    <Compile Include="Category\CategoryEdit.cs" />
+    <Compile Include="Category\CategoryListItem.cs" />
+    <Compile Include="Product\ProductCreate.cs" />
+    <Compile Include="Product\ProductDetail.cs" />
+    <Compile Include="Product\ProductEdit.cs" />
+    <Compile Include="Product\ProductListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Transaction\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
