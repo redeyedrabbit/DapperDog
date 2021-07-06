@@ -23,5 +23,6 @@ namespace DapperDog.Data
         public int Quantity { get; set; }
 
         public DateTimeOffset DateOfTransaction { get; set; }
+
     }
 }
