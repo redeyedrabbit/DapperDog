@@ -10,9 +10,18 @@ namespace DapperDog.Data
     public class Transaction
     {
         public int TransactionId { get; set; }
+
         [Required]
+        public int CustomerId { get; set; }
+
+        public virtual Customer Customer { get; set; }
+
         public int ProductId { get; set; }
-        [Required]
-        public int UserId { get; set; }
+
+        public virtual Product Product { get; set; }
+
+        public int Quantity { get; set; }
+
+        public DateTimeOffset DateOfTransaction { get; set; }
     }
 }
