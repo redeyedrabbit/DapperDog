@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,10 @@ namespace DapperDog.Models.Product
 
         public int InventoryCount { get; set; }
 
+        // testing
 
+        [Display(Name = "Brand Name")]
+
+        public virtual string BrandName { get; set; }
     }
 }

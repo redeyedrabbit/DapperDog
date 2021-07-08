@@ -13,7 +13,7 @@ namespace DapperDog.Data
         [Key]
         public int ProductId { get; set; }
         // Do I need this with new user roles method? **REMOVE BEFORE TURNING IN**
-       // [Required]
+        // [Required]
         //public Guid ManagerId { get; set; }
 
         [Required]
@@ -22,7 +22,7 @@ namespace DapperDog.Data
         // 
         //The ForeignKeyAttribute on property 'BrandId' on type 'DapperDog.Data.Product' is not valid.The navigation property 'Brand' was not found on the dependent type 'DapperDog.Data.Product'. The Name value should be a valid navigation property name.
 
-                [Required]
+        [Required]
         //[ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
 
@@ -41,6 +41,8 @@ namespace DapperDog.Data
         [Required]
         public int InventoryCount { get; set; }
 
-        public virtual IEnumerable<Brand> Brands { get; set; }
+        public virtual Brand Brand { get; set; }
+
+        public virtual string BrandName { get; set; }
     }
 }

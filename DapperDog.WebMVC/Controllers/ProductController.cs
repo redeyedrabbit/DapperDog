@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 
 namespace DapperDog.WebMVC.Controllers
@@ -23,8 +22,8 @@ namespace DapperDog.WebMVC.Controllers
             ViewBag.Name = "New Product";
             return View();
         }
-        // Come back to!!! Not working - error
-        //[HttpPost]
+        
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProductCreate model)
         {
@@ -56,8 +55,8 @@ namespace DapperDog.WebMVC.Controllers
                 Description = product.Description
             });
         }
-        // COME BACK TO!!!!!! Error
-        //[HttpPost]
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ProductEdit model)
         {
