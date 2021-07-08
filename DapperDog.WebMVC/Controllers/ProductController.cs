@@ -23,8 +23,8 @@ namespace DapperDog.WebMVC.Controllers
             ViewBag.Name = "New Product";
             return View();
         }
-
-        [HttpPost]
+        // Come back to!!! Not working - error
+        //[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProductCreate model)
         {
@@ -56,8 +56,8 @@ namespace DapperDog.WebMVC.Controllers
                 Description = product.Description
             });
         }
-
-        [HttpPost]
+        // COME BACK TO!!!!!! Error
+        //[HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ProductEdit model)
         {

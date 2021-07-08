@@ -1,4 +1,5 @@
-﻿using DapperDog.Services;
+﻿using DapperDog.Models.Customer;
+using DapperDog.Services;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,12 @@ namespace DapperDog.WebMVC.Controllers
             return View(new CustomerEdit
             {
                 CustomerId = customer.CustomerId,
-                Name = customer.Name
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                PhoneNumber = customer.PhoneNumber,
+                Address = customer.Address,
+                State = customer.State,
+                Zipcode = customer.Zipcode
             });
         }
 
