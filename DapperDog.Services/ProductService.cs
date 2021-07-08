@@ -88,5 +88,23 @@ namespace DapperDog.Services
             }
         }
 
+        public bool DeleteProduct(int productId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                if (!ctx.Products.Any(m => m.ProductId == productId))
+                    return false;
+
+                var model =
+                    ctx
+                    .Products
+                    .Single(m => m.ProductId == productId);
+
+                ctx.Products.Remove(model);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }

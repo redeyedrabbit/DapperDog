@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 
 namespace DapperDog.WebMVC.Controllers
@@ -85,5 +86,15 @@ namespace DapperDog.WebMVC.Controllers
             var service = new ProductService(userId);
             return service;
         }
+
+        
+        public ActionResult Delete(int productId)
+        {
+            var service = CreateProductService();
+
+            var model = service.GetProductDetailsById(productId);
+            return View(model);
+        }
+
     }
 }

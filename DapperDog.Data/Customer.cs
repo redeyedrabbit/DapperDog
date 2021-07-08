@@ -18,7 +18,7 @@ namespace DapperDog.Data
         public int PhoneNumber { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
-        public enum State { get; set; }
+        public State State { get; set; }
         public string Zipcode { get; set; }
 
         //Checkout
@@ -26,7 +26,7 @@ namespace DapperDog.Data
 
         public string BillingAddress { get; set; }
         public string BillingCity { get; set; }
-        public enum BillingState { get; set; }
+        public BillingState BillingState { get; set; }
         public string BillingZipcode { get; set; }
         public int BillingPhoneNumber { get; set; }
 
