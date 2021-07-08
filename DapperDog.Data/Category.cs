@@ -11,7 +11,6 @@ namespace DapperDog.Data
     {
         public int CategoryId { get; set; }
 
-        //Changed from string to enum
         [Required]
         public string Name { get; set; }
     }
