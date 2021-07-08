@@ -5,15 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DapperDog.Data
+namespace DapperDog.Models.Brand
 {
-    public class Brand
+    public class BrandEdit
     {
         public int BrandId { get; set; }
 
         [Required]
+        [Display(Name = "Enter the product name")]
+        [MinLength(3, ErrorMessage = "The name needs to be longer.")]
+        [MaxLength(80, ErrorMessage = "Please enter a more brief name.")]
         public string Name { get; set; }
-
-        //public virtual IEnumerable<Brand> Brands { get; set; }
     }
 }

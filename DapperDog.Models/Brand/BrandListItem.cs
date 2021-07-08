@@ -1,19 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DapperDog.Data
+namespace DapperDog.Models.Brand
 {
-    public class Brand
+    public class BrandListItem
     {
         public int BrandId { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
-        //public virtual IEnumerable<Brand> Brands { get; set; }
     }
 }
