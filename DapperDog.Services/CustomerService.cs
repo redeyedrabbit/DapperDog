@@ -21,7 +21,7 @@ namespace DapperDog.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var customer = ctx.Customers.Single(c => c.CustomerId == id);
+                var customer = ctx.Customers.Single(m => m.CustomerId == id);
                 return new CustomerDetail
                 {
                     CustomerId = customer.CustomerId,
@@ -79,11 +79,11 @@ namespace DapperDog.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var customer = ctx.Customers.Single(m => m.CustomerId == model.CustomerId);
-                customer.FirstName = model.FirstName,
-                    customer.LastName = model.LastName,
-                    customer.PhoneNumber = model.PhoneNumber,
-                    customer.Address = model.Address,
-                    customer.State = model.State,
+                customer.FirstName = model.FirstName;
+                customer.LastName = model.LastName;
+                customer.PhoneNumber = model.PhoneNumber;
+                customer.Address = model.Address;
+                customer.State = model.State;
                     customer.Zipcode = model.Zipcode;
 
                 return ctx.SaveChanges() == 1;
