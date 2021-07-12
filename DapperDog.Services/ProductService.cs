@@ -51,7 +51,7 @@ namespace DapperDog.Services
                     Price = model.Price,
                     InventoryCount = model.InventoryCount
 
-                    
+
                 };
 
                 ctx.Products.Add(newProduct);
@@ -85,7 +85,12 @@ namespace DapperDog.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var product = ctx.Products.Single(m => m.ProductId == model.ProductId);
+                product.Name = model.Name;
+                product.CategoryId = model.CategoryId;
+                product.BrandId = model.BrandId;
                 product.Description = model.Description;
+                product.Price = model.Price;
+                product.InventoryCount = model.InventoryCount;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -95,16 +100,21 @@ namespace DapperDog.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                if (!ctx.Products.Any(m => m.ProductId == productId))
-                    return false;
+                //if (!ctx.Products.Any(m => m.ProductId == productId))
+                //    return false;
+                //var model =
+                //    ctx
+                //    .Products
+                //    .Single(m => m.ProductId == productId);
 
-                var model =
-                    ctx
+                //ctx.Products.Remove(model);
+
+                //return ctx.SaveChanges() == 1;
+
+                var entity = ctx
                     .Products
-                    .Single(m => m.ProductId == productId);
-
-                ctx.Products.Remove(model);
-
+                    .Single(e => e.ProductId == productId);
+                ctx.Products.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

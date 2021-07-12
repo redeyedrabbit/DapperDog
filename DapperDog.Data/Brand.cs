@@ -9,6 +9,7 @@ namespace DapperDog.Data
 {
     public class Brand
     {
+        [Key]
         public int BrandId { get; set; }
 
         [Required]

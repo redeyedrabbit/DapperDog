@@ -9,6 +9,7 @@ namespace DapperDog.Data
 {
     public class Category
     {
+        [Key]
         public int CategoryId { get; set; }
 
         [Required]

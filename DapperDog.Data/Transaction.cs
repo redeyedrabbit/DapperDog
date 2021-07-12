@@ -9,6 +9,7 @@ namespace DapperDog.Data
 {
     public class Transaction
     {
+        [Key]
         public int TransactionId { get; set; }
 
         [Required]

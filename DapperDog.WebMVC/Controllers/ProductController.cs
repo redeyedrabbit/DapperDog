@@ -22,7 +22,7 @@ namespace DapperDog.WebMVC.Controllers
             ViewBag.Name = "New Product";
             return View();
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProductCreate model)
@@ -49,9 +49,9 @@ namespace DapperDog.WebMVC.Controllers
         public ActionResult Edit(int id)
         {
             var product = CreateProductService().GetProductDetailsById(id);
-            return View(new ProductEdit 
+            return View(new ProductEdit
             {
-                ProductId = product.ProductId,
+                //ProductId = product.ProductId,
                 Description = product.Description
             });
         }
@@ -86,13 +86,27 @@ namespace DapperDog.WebMVC.Controllers
             return service;
         }
 
-        
+        [ActionName("Delete")]
         public ActionResult Delete(int id)
+        {
+            var svc = CreateProductService();
+
+            var model = svc.GetProductDetailsById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteProduct(int id)
         {
             var service = CreateProductService();
 
-            var model = service.GetProductDetailsById(id);
-            return View(model);
+            service.DeleteProduct(id);
+
+            TempData["SaveResult"] = "Product was successfully deleted";
+
+            return RedirectToAction("Index");
         }
 
     }
