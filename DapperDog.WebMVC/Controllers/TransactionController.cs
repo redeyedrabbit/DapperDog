@@ -92,10 +92,24 @@ namespace DapperDog.WebMVC.Controllers
 
         public ActionResult Delete(int id)
         {
+            var svc = CreateTransactionService();
+
+            var model = svc.GetTransactionDetailsById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteTransaction(int id)
+        {
             var service = CreateTransactionService();
 
-            var model = service.GetTransactionDetailsById(id);
-            return View(model);
+            service.DeleteTransaction(id);
+
+            TempData["SaveResult"] = "The Transaction was successfully deleted";
+
+            return RedirectToAction("Index");
         }
     }
 }

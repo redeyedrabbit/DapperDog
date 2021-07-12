@@ -89,10 +89,24 @@ namespace DapperDog.WebMVC.Controllers
 
         public ActionResult Delete(int id)
         {
+            var svc = CreateBrandService();
+
+            var model = svc.GetBrandDetailsById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteBrand(int id)
+        {
             var service = CreateBrandService();
 
-            var model = service.GetBrandDetailsById(id);
-            return View(model);
+            service.DeleteBrand(id);
+
+            TempData["SaveResult"] = "The Brand was successfully deleted";
+
+            return RedirectToAction("Index");
         }
     }
 }

@@ -89,10 +89,24 @@ namespace DapperDog.WebMVC.Controllers
 
         public ActionResult Delete(int id)
         {
+            var svc = CreateCategoryService();
+
+            var model = svc.GetCategoryDetailsById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCategory(int id)
+        {
             var service = CreateCategoryService();
 
-            var model = service.GetCategoryDetailsById(id);
-            return View(model);
+            service.DeleteCategory(id);
+
+            TempData["SaveResult"] = "The Category was successfully deleted";
+
+            return RedirectToAction("Index");
         }
     }
 }

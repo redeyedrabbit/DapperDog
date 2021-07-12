@@ -196,7 +196,7 @@ th {
   *,
   *:before,
   *:after {
-    color: #000 !important;
+    color: hotpink !important;
     text-shadow: none !important;
     background: transparent !important;
     -webkit-box-shadow: none !important;
@@ -1086,7 +1086,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: #fff;
+  background-color: hotpink;
 }
 input,
 button,
@@ -4665,7 +4665,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #787878;
+  background-color: #222;
   border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
@@ -5036,7 +5036,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: hotpink;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -6000,7 +6000,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000;
+  background-color: hotpink;
 }
 .modal-backdrop.fade {
   filter: alpha(opacity=0);
