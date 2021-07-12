@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace DapperDog.Models.Transaction
 {
-    class TransactionDetail
+    public class TransactionDetail
     {
+        public int TransactionId { get; set; }
+        
+        public int CustomerId { get; set; }
+
+        public int ProductId { get; set; }
+
+        public int Quantity { get; set; }
+
+        public DateTimeOffset DateOfTransaction { get; set; }
     }
 }

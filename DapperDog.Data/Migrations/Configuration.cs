@@ -10,7 +10,6 @@ namespace DapperDog.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "DapperDog.Data.ApplicationDbContext";
         }
 
         protected override void Seed(DapperDog.Data.ApplicationDbContext context)

@@ -87,11 +87,11 @@ namespace DapperDog.WebMVC.Controllers
         }
 
 
-        public ActionResult Delete(int brandId)
+        public ActionResult Delete(int id)
         {
             var service = CreateBrandService();
 
-            var model = service.GetBrandDetailsById(brandId);
+            var model = service.GetBrandDetailsById(id);
             return View(model);
         }
     }

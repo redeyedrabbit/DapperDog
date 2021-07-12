@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DapperDog.Data
+namespace DapperDog.Models.ShoppingCart
 {
-    public class ShoppingCart
+    class ShoppingCartCreate
     {
     }
 }

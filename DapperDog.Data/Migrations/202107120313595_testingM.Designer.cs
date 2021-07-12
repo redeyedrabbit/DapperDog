@@ -7,13 +7,13 @@ namespace DapperDog.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class testingM : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(testingM));
         
         string IMigrationMetadata.Id
         {
-            get { return "202106302121173_InitialCreate"; }
+            get { return "202107120313595_testingM"; }
         }
         
         string IMigrationMetadata.Source

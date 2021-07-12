@@ -31,7 +31,7 @@ namespace DapperDog.Services
                     CategoryId = product.CategoryId,
                     Price = product.Price,
                     InventoryCount = product.InventoryCount,
-                    BrandName = product.Brand.Name
+                    //BrandName = product.Brand.Name
 
                 };
             }
@@ -50,6 +50,8 @@ namespace DapperDog.Services
                     Size = model.Size,
                     Price = model.Price,
                     InventoryCount = model.InventoryCount
+
+                    
                 };
 
                 ctx.Products.Add(newProduct);
