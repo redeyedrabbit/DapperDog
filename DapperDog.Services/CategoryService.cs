@@ -17,6 +17,8 @@ namespace DapperDog.Services
             _userId = userId;
         }
 
+        public CategoryService() { }
+
         public CategoryDetail GetCategoryDetailsById(int id)
         {
             using (var ctx = new ApplicationDbContext())

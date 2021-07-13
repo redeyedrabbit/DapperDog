@@ -37,6 +37,16 @@ namespace DapperDog.WebMVC.Controllers
                         };
             ViewBag.BrandId = query.ToList();
 
+            // Show Category Name in dropdown option
+            List<Category> Categories = new CategoryService().GetCategories().ToList();
+            var queryTwo = from m in Categories
+                        select new SelectListItem()
+                        {
+                            Value = m.CategoryId.ToString(),
+                            Text = m.Name
+                        };
+            ViewBag.CategoryId = queryTwo.ToList();
+
             return View();
         }
 
@@ -78,6 +88,16 @@ namespace DapperDog.WebMVC.Controllers
                            
                         };
             ViewBag.BrandId = query.ToList();
+
+            // Show Category Name in dropdown option
+            List<Category> Categories = new CategoryService().GetCategories().ToList();
+            var queryTwo = from m in Categories
+                           select new SelectListItem()
+                           {
+                               Value = m.CategoryId.ToString(),
+                               Text = m.Name
+                           };
+            ViewBag.CategoryId = queryTwo.ToList();
 
             return View(new ProductEdit
             {

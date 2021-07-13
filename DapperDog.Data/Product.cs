@@ -8,6 +8,14 @@ using System.Threading.Tasks;
 
 namespace DapperDog.Data
 {
+    public enum Size { XS, S, M, L, XL, OS}
+    // XS Toy breed (up to 5lbs)
+    // S Small breed (5-10lbs)
+    // M Medium breed (10-30lbs)
+    // L Large breed (30-50lbs)
+    // XL Extra Large Breed (50-80lbs)
+    // OS One Size fits all (0-15lbs or 30-50lbs)
+
     public class Product
     {
         [Key]
@@ -28,8 +36,8 @@ namespace DapperDog.Data
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        public int Size { get; set; }
+        //[Required]
+        public Size Size { get; set; }
 
         [Required]
         public decimal Price { get; set; }
