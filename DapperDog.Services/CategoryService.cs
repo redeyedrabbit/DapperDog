@@ -59,6 +59,15 @@ namespace DapperDog.Services
 
         }
 
+        public IEnumerable<Category> GetCategories()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Categories.ToList();
+
+            }
+        }
+
         public bool UpdateCategory(CategoryEdit model)
         {
             using (var ctx = new ApplicationDbContext())

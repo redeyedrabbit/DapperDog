@@ -1,4 +1,5 @@
-﻿using DapperDog.Models.Product;
+﻿using DapperDog.Data;
+using DapperDog.Models.Product;
 using DapperDog.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -11,6 +12,12 @@ namespace DapperDog.WebMVC.Controllers
 {
     public class ProductController : Controller
     {
+        //private readonly Guid _userId;
+
+        //public BrandService(Guid userId)
+        //{
+        //    _userId = userId;
+        //}
         // GET: Product
         public ActionResult Index()
         {
@@ -20,6 +27,16 @@ namespace DapperDog.WebMVC.Controllers
         public ActionResult Create()
         {
             ViewBag.Name = "New Product";
+            // Show Brand Name in dropdown option
+            List<Brand> Brands = new BrandService().GetBrands().ToList();
+            var query = from m in Brands
+                        select new SelectListItem()
+                        {
+                            Value = m.BrandId.ToString(),
+                            Text = m.Name
+                        };
+            ViewBag.BrandId = query.ToList();
+
             return View();
         }
 
@@ -36,7 +53,7 @@ namespace DapperDog.WebMVC.Controllers
             }
 
             //Did not save correctly
-            ModelState.AddModelError("", "Soemthing went wrong = could not create a Product");
+            ModelState.AddModelError("", "Something went wrong = could not create a Product");
             return View(model);
         }
 
@@ -49,6 +66,19 @@ namespace DapperDog.WebMVC.Controllers
         public ActionResult Edit(int id)
         {
             var product = CreateProductService().GetProductDetailsById(id);
+
+            ViewBag.Name = "New Product";
+            // Show Brand Name in dropdown option
+            List<Brand> Brands = new BrandService().GetBrands().ToList();
+            var query = from m in Brands
+                        select new SelectListItem()
+                        {
+                            Value = m.BrandId.ToString(),
+                            Text = m.Name
+                           
+                        };
+            ViewBag.BrandId = query.ToList();
+
             return View(new ProductEdit
             {
                 //ProductId = product.ProductId,
@@ -85,6 +115,13 @@ namespace DapperDog.WebMVC.Controllers
             var service = new ProductService(userId);
             return service;
         }
+
+        //private BrandService CreateBrandService()
+        //{
+        //    var userId = Guid.Parse(User.Identity.GetUserId());
+        //    var service = new BrandService(userId);
+        //    return service;
+        //}
 
         [ActionName("Delete")]
         public ActionResult Delete(int id)
