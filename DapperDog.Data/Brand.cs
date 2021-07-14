@@ -1,12 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DapperDog.Data
 {
-    class Brand
+    public class Brand
     {
+        [Key]
+        public int BrandId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+
     }
 }
