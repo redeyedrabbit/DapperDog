@@ -1,5 +1,5 @@
 # DapperDog
-> An MVC that allows a pet store to manage its users, product listing database, customers, and transactions.
+> An application that allows a pet store to manage its users, product listing database, customers, and transactions.
 
 ## Table of Contents
 * [Database](#database)
