@@ -27,16 +27,17 @@ namespace DapperDog.Services
                     ProductId = product.ProductId,
                     Name = product.Name,
                     Description = product.Description,
-                    BrandId = product.BrandId,
                     CategoryId = product.CategoryId,
+                    BrandId = product.BrandId,
+                    Size = product.Size,
                     Price = product.Price,
-                    InventoryCount = product.InventoryCount,
-                    BrandName = product.Brand.Name
+                    InventoryCount = product.InventoryCount
 
                 };
             }
         }
 
+        
         public bool CreateProduct(ProductCreate model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -50,6 +51,8 @@ namespace DapperDog.Services
                     Size = model.Size,
                     Price = model.Price,
                     InventoryCount = model.InventoryCount
+
+
                 };
 
                 ctx.Products.Add(newProduct);
@@ -65,12 +68,9 @@ namespace DapperDog.Services
                 {
                     ProductId = m.ProductId,
                     Name = m.Name,
-                    BrandId = m.BrandId,
-                    // list brand names not ID
-                    //Brands = m.Brands.Select(a => a.Name).ToList(),
                     CategoryId = m.CategoryId,
-                    Description = m.Description,
-                    Price = m.Price
+                    Price = m.Price,
+                    InventoryCount = m.InventoryCount
                 });
 
                 return query.ToArray();
@@ -78,12 +78,20 @@ namespace DapperDog.Services
 
         }
 
+        
+
         public bool UpdateProduct(ProductEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var product = ctx.Products.Single(m => m.ProductId == model.ProductId);
+                product.Name = model.Name;
                 product.Description = model.Description;
+                product.CategoryId = model.CategoryId;
+                product.BrandId = model.BrandId;
+                product.Size = model.Size;
+                product.Price = model.Price;
+                product.InventoryCount = model.InventoryCount;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -93,16 +101,10 @@ namespace DapperDog.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                if (!ctx.Products.Any(m => m.ProductId == productId))
-                    return false;
-
-                var model =
-                    ctx
+                var entity = ctx
                     .Products
-                    .Single(m => m.ProductId == productId);
-
-                ctx.Products.Remove(model);
-
+                    .Single(e => e.ProductId == productId);
+                ctx.Products.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

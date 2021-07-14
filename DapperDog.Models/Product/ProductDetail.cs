@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DapperDog.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -19,13 +20,11 @@ namespace DapperDog.Models.Product
 
         public int CategoryId { get; set; }
 
+        public Size Size { get; set; }
+
         public decimal Price { get; set; }
 
         public int InventoryCount { get; set; }
-
-        // testing
-
-        [Display(Name = "Brand Name")]
 
         public virtual string BrandName { get; set; }
     }

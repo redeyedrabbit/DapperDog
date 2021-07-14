@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DapperDog.WebMVC.Controllers
 {
+    [Authorize]
     public class BrandController : Controller
     {
         // GET: Brand
@@ -87,12 +88,26 @@ namespace DapperDog.WebMVC.Controllers
         }
 
 
-        public ActionResult Delete(int brandId)
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateBrandService();
+
+            var model = svc.GetBrandDetailsById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteBrand(int id)
         {
             var service = CreateBrandService();
 
-            var model = service.GetBrandDetailsById(brandId);
-            return View(model);
+            service.DeleteBrand(id);
+
+            TempData["SaveResult"] = "The Brand was successfully deleted";
+
+            return RedirectToAction("Index");
         }
     }
 }

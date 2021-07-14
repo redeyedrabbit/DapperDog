@@ -9,11 +9,11 @@ namespace DapperDog.Data
 {
     public class Brand
     {
+        [Key]
         public int BrandId { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        //public virtual IEnumerable<Brand> Brands { get; set; }
     }
 }

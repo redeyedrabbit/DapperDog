@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DapperDog.WebMVC.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         // GET: Customer
@@ -54,8 +55,8 @@ namespace DapperDog.WebMVC.Controllers
                 CustomerId = customer.CustomerId,
                 FirstName = customer.FirstName,
                 LastName = customer.LastName,
-                PhoneNumber = customer.PhoneNumber,
                 Address = customer.Address,
+                City = customer.City,
                 State = customer.State,
                 Zipcode = customer.Zipcode
             });
@@ -92,12 +93,26 @@ namespace DapperDog.WebMVC.Controllers
         }
 
 
-        public ActionResult Delete(int customerId)
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateCustomerService();
+
+            var model = svc.GetCustomerDetailsById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteCustomer(int id)
         {
             var service = CreateCustomerService();
 
-            var model = service.GetCustomerDetailsById(customerId);
-            return View(model);
+            service.DeleteCustomer(id);
+
+            TempData["SaveResult"] = "The Customer was successfully deleted";
+
+            return RedirectToAction("Index");
         }
     }
 }

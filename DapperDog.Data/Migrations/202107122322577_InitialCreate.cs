@@ -26,6 +26,27 @@ namespace DapperDog.Data.Migrations
                 .PrimaryKey(t => t.CategoryId);
             
             CreateTable(
+                "dbo.Customer",
+                c => new
+                    {
+                        CustomerId = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        PhoneNumber = c.Int(nullable: false),
+                        Address = c.String(),
+                        City = c.String(),
+                        State = c.Int(nullable: false),
+                        Zipcode = c.String(),
+                        BillingAddressSameAsHomeAddress = c.Boolean(nullable: false),
+                        BillingAddress = c.String(),
+                        BillingCity = c.String(),
+                        BillingState = c.Int(nullable: false),
+                        BillingZipcode = c.String(),
+                        BillingPhoneNumber = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.CustomerId);
+            
+            CreateTable(
                 "dbo.Product",
                 c => new
                     {
@@ -37,6 +58,8 @@ namespace DapperDog.Data.Migrations
                         Size = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                         InventoryCount = c.Int(nullable: false),
+                        BrandName = c.String(),
+                        CategoryName = c.String(),
                     })
                 .PrimaryKey(t => t.ProductId);
             
@@ -69,10 +92,16 @@ namespace DapperDog.Data.Migrations
                 c => new
                     {
                         TransactionId = c.Int(nullable: false, identity: true),
+                        CustomerId = c.Int(nullable: false),
                         ProductId = c.Int(nullable: false),
-                        UserId = c.Int(nullable: false),
+                        Quantity = c.Int(nullable: false),
+                        DateOfTransaction = c.DateTimeOffset(nullable: false, precision: 7),
                     })
-                .PrimaryKey(t => t.TransactionId);
+                .PrimaryKey(t => t.TransactionId)
+                .ForeignKey("dbo.Customer", t => t.CustomerId, cascadeDelete: true)
+                .ForeignKey("dbo.Product", t => t.ProductId, cascadeDelete: true)
+                .Index(t => t.CustomerId)
+                .Index(t => t.ProductId);
             
             CreateTable(
                 "dbo.ApplicationUser",
@@ -127,9 +156,13 @@ namespace DapperDog.Data.Migrations
             DropForeignKey("dbo.IdentityUserRole", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
+            DropForeignKey("dbo.Transaction", "ProductId", "dbo.Product");
+            DropForeignKey("dbo.Transaction", "CustomerId", "dbo.Customer");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
+            DropIndex("dbo.Transaction", new[] { "ProductId" });
+            DropIndex("dbo.Transaction", new[] { "CustomerId" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
             DropTable("dbo.IdentityUserLogin");
@@ -139,6 +172,7 @@ namespace DapperDog.Data.Migrations
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
             DropTable("dbo.Product");
+            DropTable("dbo.Customer");
             DropTable("dbo.Category");
             DropTable("dbo.Brand");
         }

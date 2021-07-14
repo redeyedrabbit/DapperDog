@@ -10,6 +10,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DapperDog.WebMVC.Models;
 using DapperDog.Data;
+using DapperDog.Services;
+using DapperDog.Models.User;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DapperDog.WebMVC.Controllers
 {
@@ -52,6 +55,111 @@ namespace DapperDog.WebMVC.Controllers
                 _userManager = value;
             }
         }
+
+        public ActionResult Index()
+        {
+            var userService = new UserService();
+            var users = userService.GetAllUsers();
+
+            //using(var ctx = new ApplicationDbContext())
+            //{
+            //    ctx.Roles.Add(new IdentityRole()
+            //    {
+            //        Name = "admin"
+            //    });
+            //    ctx.SaveChanges();
+            //}
+
+            var userList = users.Select(u =>
+            {
+                return new UserListItem()
+                {
+                    UserId = u.Id,
+                    UserName = u.UserName,
+                    Email = u.Email
+                };
+            }).ToList();
+            return View(userList);
+        }
+
+        public ActionResult Details(string userId)
+        {
+            ApplicationUser User = UserManager.FindById(userId);
+            var userDetailModel = new UserDetail()
+            {
+                UserName = User.UserName,
+                Email = User.Email,
+                UserId = User.Id
+            };
+            return View(userDetailModel);
+        }
+
+        public ActionResult Edit(string userId)
+        {
+            ApplicationUser User = UserManager.FindById(userId);
+            var UserRoles = UserManager.GetRoles(userId);
+            var userEditModel = new UserEdit()
+            {
+                UserName = User.UserName,
+                Email = User.Email,
+                UserId = User.Id,
+                IsAdmin = UserRoles.Any(r => r == "admin")
+            };
+            return View(userEditModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(string userId, UserEdit model)
+        {
+
+            var currentUserId = User.Identity.GetUserId();
+            var currentRoles = UserManager.GetRoles(currentUserId);
+
+            var UserRoles = UserManager.GetRoles(userId);
+            bool UserIsAdmin = UserRoles.Any(r => r == "admin");
+
+            if (!currentRoles.Contains("admin"))
+            {
+                ModelState.AddModelError("", "You do not have permission to do this");
+                return View(model);
+            }
+
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.UserId != userId)
+            {
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
+            }
+
+            ApplicationUser user = UserManager.FindById(userId);
+            user.UserName = model.UserName;
+
+            if (model.IsAdmin)
+            {
+                UserManager.AddToRole(userId, "admin");
+            }
+
+            if (UserIsAdmin && !model.IsAdmin)
+            {
+                if (userId == currentUserId)
+                {
+                    ModelState.AddModelError("", "You cannot de-op yourself");
+                    return View(model);
+                }
+                UserManager.RemoveFromRole(userId, "admin");
+            }
+
+            if (UserManager.Update(user).Succeeded)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "User could not be updated");
+            return View(model);
+        }
+
 
         //
         // GET: /Account/Login

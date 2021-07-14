@@ -8,6 +8,14 @@ using System.Threading.Tasks;
 
 namespace DapperDog.Data
 {
+    public enum Size { XS, S, M, L, XL, OS}
+    // XS Toy breed (up to 5lbs)
+    // S Small breed (5-10lbs)
+    // M Medium breed (10-30lbs)
+    // L Large breed (30-50lbs)
+    // XL Extra Large Breed (50-80lbs)
+    // OS One Size fits all (0-15lbs or 30-50lbs)
+
     public class Product
     {
         [Key]
@@ -17,13 +25,9 @@ namespace DapperDog.Data
         //public Guid ManagerId { get; set; }
 
         [Required]
-        //[ForeignKey(nameof(Brand))]
         public int BrandId { get; set; }
-        // 
-        //The ForeignKeyAttribute on property 'BrandId' on type 'DapperDog.Data.Product' is not valid.The navigation property 'Brand' was not found on the dependent type 'DapperDog.Data.Product'. The Name value should be a valid navigation property name.
 
         [Required]
-        //[ForeignKey(nameof(Category))]
         public int CategoryId { get; set; }
 
         [Required]
@@ -32,8 +36,8 @@ namespace DapperDog.Data
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        public int Size { get; set; }
+        //[Required]
+        public Size Size { get; set; }
 
         [Required]
         public decimal Price { get; set; }
@@ -41,8 +45,7 @@ namespace DapperDog.Data
         [Required]
         public int InventoryCount { get; set; }
 
-        public virtual Brand Brand { get; set; }
-
         public virtual string BrandName { get; set; }
+        public virtual string CategoryName { get; set; }
     }
 }

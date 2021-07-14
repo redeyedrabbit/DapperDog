@@ -13,7 +13,7 @@ namespace DapperDog.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202106302121173_InitialCreate"; }
+            get { return "202107122322577_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

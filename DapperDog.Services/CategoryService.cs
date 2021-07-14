@@ -17,6 +17,8 @@ namespace DapperDog.Services
             _userId = userId;
         }
 
+        public CategoryService() { }
+
         public CategoryDetail GetCategoryDetailsById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -57,6 +59,15 @@ namespace DapperDog.Services
                 return query.ToArray();
             }
 
+        }
+
+        public IEnumerable<Category> GetCategories()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Categories.ToList();
+
+            }
         }
 
         public bool UpdateCategory(CategoryEdit model)

@@ -15,23 +15,24 @@ namespace DapperDog.Data
     {
         [Key]
         public int CustomerId { get; set; }
+
+        [Required]
         public string FirstName { get; set; }
+
+        [Required]
         public string LastName { get; set; }
-        public int PhoneNumber { get; set; }
+
+        [Required]
         public string Address { get; set; }
+
+        [Required]
         public string City { get; set; }
+
+        [Required]
         public State State { get; set; }
+
+        [Required]
         public string Zipcode { get; set; }
-
-        //Checkout
-        public bool BillingAddressSameAsHomeAddress { get; set; }
-
-        public string BillingAddress { get; set; }
-        public string BillingCity { get; set; }
-        public BillingState BillingState { get; set; }
-        public string BillingZipcode { get; set; }
-        public int BillingPhoneNumber { get; set; }
-
 
 
     }

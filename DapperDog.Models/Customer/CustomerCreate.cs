@@ -11,34 +11,33 @@ namespace DapperDog.Models.Customer
     public class CustomerCreate
     {
         [Required]
-        [Display(Name = "Enter your first name")]
+        [Display(Name = "First Name:")]
         [MinLength(3, ErrorMessage = "The name needs to be longer.")]
         [MaxLength(15, ErrorMessage = "Please enter a more brief name.")]
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "Enter your last name")]
+        [Display(Name = "Last Name:")]
         [MinLength(3, ErrorMessage = "The name needs to be longer.")]
         [MaxLength(15, ErrorMessage = "Please enter a more brief name.")]
         public string LastName { get; set; }
 
         [Required]
-        [Display(Name = "Enter your phone number")]
-        [Range(0, 10, ErrorMessage = "Please enter a valid phone number")]
-        public int PhoneNumber { get; set; }
+        [Display(Name = "Street Address:")]
         public string Address { get; set; }
 
         [Required]
-        [Display(Name = "Enter your city")]
+        [Display(Name = "City")]
         [MinLength(3, ErrorMessage = "The city name needs to be longer.")]
         [MaxLength(20, ErrorMessage = "Please enter a valid city")]
         public string City { get; set; }
 
         [Required]
+        [Display(Name = "Select your State:")]
         public State State { get; set; }
 
         [Required]
-        [Display(Name = "Enter your zipcode")]
+        [Display(Name = "ZipCode:")]
         [StringLength(5, ErrorMessage = "Please enter a valid zipcode.")]
         public string Zipcode { get; set; }
     }

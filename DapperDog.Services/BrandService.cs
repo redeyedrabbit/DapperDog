@@ -17,6 +17,8 @@ namespace DapperDog.Services
             _userId = userId;
         }
 
+        public BrandService() { }
+
         public BrandDetail GetBrandDetailsById(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -57,6 +59,15 @@ namespace DapperDog.Services
                 return query.ToArray();
             }
 
+        }
+
+        public IEnumerable<Brand> GetBrands()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                return ctx.Brands.ToList();
+                
+            }
         }
 
         public bool UpdateBrand(BrandEdit model)
