@@ -20,9 +20,6 @@ namespace DapperDog.Data
     {
         [Key]
         public int ProductId { get; set; }
-        // Do I need this with new user roles method? **REMOVE BEFORE TURNING IN**
-        // [Required]
-        //public Guid ManagerId { get; set; }
 
         [Required]
         public int BrandId { get; set; }
