@@ -59,14 +59,13 @@
     <Compile Include="Product\ProductEdit.cs" />
     <Compile Include="Product\ProductListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShoppingCart\ShoopingCartDetail.cs" />
-    <Compile Include="ShoppingCart\ShoppingCartCreate.cs" />
-    <Compile Include="ShoppingCart\ShoppingCartEdit.cs" />
-    <Compile Include="ShoppingCart\ShoppingCartListItem.cs" />
     <Compile Include="Transaction\TransactionCreate.cs" />
     <Compile Include="Transaction\TransactionDetail.cs" />
     <Compile Include="Transaction\TransactionEdit.cs" />
     <Compile Include="Transaction\TransactionListItem.cs" />
+    <Compile Include="User\UserDetail.cs" />
+    <Compile Include="User\UserEdit.cs" />
+    <Compile Include="User\UserListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DapperDog.Data\DapperDog.Data.csproj">

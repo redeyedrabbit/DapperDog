@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 
 namespace DapperDog.WebMVC.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         //private readonly Guid _userId;
@@ -27,6 +29,7 @@ namespace DapperDog.WebMVC.Controllers
         public ActionResult Create()
         {
             ViewBag.Name = "New Product";
+            
             // Show Brand Name in dropdown option
             List<Brand> Brands = new BrandService().GetBrands().ToList();
             var query = from m in Brands
@@ -50,6 +53,7 @@ namespace DapperDog.WebMVC.Controllers
             return View();
         }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProductCreate model)

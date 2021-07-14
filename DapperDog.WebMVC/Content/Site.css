@@ -1,7 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #000000;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -23,3 +25,19 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.header{
+    max-height: 500px;
+    background-color: #fff;
+    padding: 5px;
+}
+.navbar {    
+    background-color: #000;
+    font-size: 14px;
+}
+footer{
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+

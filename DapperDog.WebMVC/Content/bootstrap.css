@@ -27,6 +27,14 @@ section,
 summary {
   display: block;
 }
+
+/* RACHEL*/
+.header {
+    max-height: 500px;
+    background-color: #fff;
+    padding: 5px;
+}
+
 audio,
 canvas,
 progress,
@@ -196,7 +204,7 @@ th {
   *,
   *:before,
   *:after {
-    color: hotpink !important;
+    color: #000 !important;
     text-shadow: none !important;
     background: transparent !important;
     -webkit-box-shadow: none !important;
@@ -1086,7 +1094,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
-  background-color: hotpink;
+  background-color: #fff;
 }
 input,
 button,
@@ -4292,10 +4300,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-fixed-top,
 .navbar-fixed-bottom {
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: 1030;
+    position: fixed;
+    right: 0;
+    left: 0;
+    /*z-index: 1030;*/
 }
 .navbar-fixed-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
@@ -4339,8 +4347,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-static-top {
-  z-index: 1000;
-  border-width: 0 0 1px;
+    /*z-index: 1000;*/
+    border-width: 0 0 1px;
 }
 @media (min-width: 768px) {
   .navbar-static-top {
@@ -4569,7 +4577,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
+  background-color: #000000;
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
@@ -5032,11 +5040,12 @@ a.badge:focus {
   margin-left: 3px;
 }
 .jumbotron {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
   color: inherit;
-  background-color: hotpink;
+  background-color: #000;
+  text-align: center;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -5052,9 +5061,9 @@ a.badge:focus {
 }
 .container .jumbotron,
 .container-fluid .jumbotron {
-  padding-right: 15px;
-  padding-left: 15px;
-  border-radius: 6px;
+  padding-right: 5px;
+  padding-left: 5px;
+  border-radius: 2px;
 }
 .jumbotron .container {
   max-width: 100%;
@@ -5558,7 +5567,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #f5f5f5;
+  background-color: #000000;
   border-top: 1px solid #ddd;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -6000,7 +6009,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: hotpink;
+  background-color: #000;
 }
 .modal-backdrop.fade {
   filter: alpha(opacity=0);

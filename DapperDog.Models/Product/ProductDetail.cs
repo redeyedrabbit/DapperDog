@@ -30,6 +30,6 @@ namespace DapperDog.Models.Product
 
         //[Display(Name = "Brand Name")]
 
-        //public virtual string BrandName { get; set; }
+        public virtual string BrandName { get; set; }
     }
 }

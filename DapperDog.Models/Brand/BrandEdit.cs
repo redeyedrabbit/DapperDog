@@ -12,7 +12,7 @@ namespace DapperDog.Models.Brand
         public int BrandId { get; set; }
 
         [Required]
-        [Display(Name = "Enter the product name")]
+        [Display(Name = "Brand Name:")]
         [MinLength(3, ErrorMessage = "The name needs to be longer.")]
         [MaxLength(80, ErrorMessage = "Please enter a more brief name.")]
         public string Name { get; set; }

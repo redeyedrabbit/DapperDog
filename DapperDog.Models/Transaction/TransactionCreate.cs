@@ -11,7 +11,8 @@ namespace DapperDog.Models.Transaction
     {
         [Required]
         public int CustomerId { get; set; }
-                
+
+        [Required]
         public int ProductId { get; set; }
 
         //public int Quantity { get; set; }

@@ -28,11 +28,11 @@
                     <span class="icon-bar"></span>
                 </button>
 
+                @Html.ActionLink("Dapper Dog", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Users", "Index", "Account")</li>
                     <li>@Html.ActionLink("Products", "Index", "Product")</li>
                     <li>@Html.ActionLink("Brands", "Index", "Brand")</li>
                     <li>@Html.ActionLink("Categories", "Index", "Category")</li>
@@ -47,8 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p><br /><br />&copy; @DateTime.Now.Year - Dapper Dog<br /><br /></p>
-
+            <p>&copy; @DateTime.Now.Year - Dapper Dog</p>
         </footer>
     </div>
 
