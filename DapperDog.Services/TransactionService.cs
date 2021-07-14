@@ -26,8 +26,7 @@ namespace DapperDog.Services
                 {
                     TransactionId = transaction.TransactionId,
                     CustomerId = transaction.CustomerId,
-                    ProductId = transaction.ProductId,
-                    Quantity = transaction.Quantity,
+                    ProductId = transaction.ProductId,                    
                     DateOfTransaction = transaction.DateOfTransaction
 
                 };
@@ -41,7 +40,8 @@ namespace DapperDog.Services
                 var newTransaction = new Transaction()
                 {
                     CustomerId = model.CustomerId,
-                    ProductId = model.ProductId
+                    ProductId = model.ProductId,
+                    DateOfTransaction = DateTimeOffset.Now
                 };
 
                 ctx.Transactions.Add(newTransaction);
@@ -57,8 +57,7 @@ namespace DapperDog.Services
                 {
                     TransactionId = m.TransactionId,
                     CustomerId = m.CustomerId,
-                    ProductId = m.ProductId,
-                    Quantity = m.Quantity,
+                    ProductId = m.ProductId,                    
                     DateOfTransaction = m.DateOfTransaction
                 });
 
@@ -74,8 +73,6 @@ namespace DapperDog.Services
                 var transaction = ctx.Transactions.Single(m => m.TransactionId == model.TransactionId);
                 transaction.CustomerId = model.CustomerId;
                 transaction.ProductId = model.ProductId;
-                transaction.Quantity = model.Quantity;
-                transaction.DateOfTransaction = model.DateOfTransaction;
 
                 return ctx.SaveChanges() == 1;
             }

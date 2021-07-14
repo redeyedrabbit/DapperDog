@@ -26,10 +26,6 @@ namespace DapperDog.Models.Product
 
         public int InventoryCount { get; set; }
 
-        // testing
-
-        //[Display(Name = "Brand Name")]
-
         public virtual string BrandName { get; set; }
     }
 }

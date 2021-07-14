@@ -27,7 +27,6 @@ namespace DapperDog.Services
                     CustomerId = customer.CustomerId,
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
-                    //PhoneNumber = customer.PhoneNumber,
                     Address = customer.Address,
                     City = customer.City,
                     State = customer.State,
@@ -44,7 +43,6 @@ namespace DapperDog.Services
                 {
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    //PhoneNumber = model.PhoneNumber,
                     Address = model.Address,
                     City = model.City,
                     State = model.State,
@@ -65,7 +63,6 @@ namespace DapperDog.Services
                     CustomerId = m.CustomerId,
                     FirstName = m.FirstName,
                     LastName = m.LastName,
-                    //PhoneNumber = m.PhoneNumber,
                     Address = m.Address,
                     City = m.City,
                     State = m.State,
@@ -84,7 +81,6 @@ namespace DapperDog.Services
                 var customer = ctx.Customers.Single(m => m.CustomerId == model.CustomerId);
                 customer.FirstName = model.FirstName;
                 customer.LastName = model.LastName;
-                //customer.PhoneNumber = model.PhoneNumber;
                 customer.Address = model.Address;
                 customer.City = model.City;
                 customer.State = model.State;

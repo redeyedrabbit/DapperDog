@@ -16,13 +16,7 @@ namespace DapperDog.WebMVC.Controllers
     public class ProductController : Controller
     {
         public ApplicationDbContext _db = new ApplicationDbContext();
-        //private readonly Guid _userId;
-
-        //public BrandService(Guid userId)
-        //{
-        //    _userId = userId;
-        //}
-        // GET: Product
+        
         public ActionResult Index()
         {
             return View(CreateProductService().GetProductList());
@@ -141,12 +135,6 @@ namespace DapperDog.WebMVC.Controllers
             return service;
         }
 
-        //private BrandService CreateBrandService()
-        //{
-        //    var userId = Guid.Parse(User.Identity.GetUserId());
-        //    var service = new BrandService(userId);
-        //    return service;
-        //}
 
         [ActionName("Delete")]
         public ActionResult Delete(int id)

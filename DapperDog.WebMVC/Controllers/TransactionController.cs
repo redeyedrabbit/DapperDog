@@ -54,9 +54,7 @@ namespace DapperDog.WebMVC.Controllers
             {
                 TransactionId = transaction.TransactionId,
                 CustomerId = transaction.CustomerId,
-                ProductId = transaction.ProductId,
-                Quantity = transaction.Quantity,
-                DateOfTransaction = transaction.DateOfTransaction
+                ProductId = transaction.ProductId
             });
         }
 

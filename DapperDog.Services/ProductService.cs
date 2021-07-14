@@ -98,17 +98,6 @@ namespace DapperDog.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                //if (!ctx.Products.Any(m => m.ProductId == productId))
-                //    return false;
-                //var model =
-                //    ctx
-                //    .Products
-                //    .Single(m => m.ProductId == productId);
-
-                //ctx.Products.Remove(model);
-
-                //return ctx.SaveChanges() == 1;
-
                 var entity = ctx
                     .Products
                     .Single(e => e.ProductId == productId);

@@ -22,11 +22,6 @@ namespace DapperDog.Models.Customer
         [MaxLength(15, ErrorMessage = "Please enter a more brief name.")]
         public string LastName { get; set; }
 
-        //[Required]
-        //[Display(Name = "Phone Number:")]
-        //[StringLength(10, ErrorMessage = "Please enter a valid phone number")]
-        //public int PhoneNumber { get; set; }
-
         [Required]
         [Display(Name = "Street Address:")]
         public string Address { get; set; }
