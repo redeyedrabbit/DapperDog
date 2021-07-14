@@ -2,6 +2,7 @@
 using DapperDog.Models.Product;
 using DapperDog.Services;
 using Microsoft.AspNet.Identity;
+using MvcPaging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace DapperDog.WebMVC.Controllers
     [Authorize]
     public class ProductController : Controller
     {
+        public ApplicationDbContext _db = new ApplicationDbContext();
         //private readonly Guid _userId;
 
         //public BrandService(Guid userId)
@@ -104,8 +106,7 @@ namespace DapperDog.WebMVC.Controllers
             ViewBag.CategoryId = queryTwo.ToList();
 
             return View(new ProductEdit
-            {
-                //ProductId = product.ProductId,
+            {                
                 Description = product.Description
             });
         }
@@ -169,6 +170,18 @@ namespace DapperDog.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult ViewByCategory(int categoryId, int? page)
+        {
+            int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
+
+            var productsByCategory = _db.Products.Where(p => p.CategoryId.Equals(categoryId)).OrderBy(p => p.ProductId).ToPagedList(currentPageIndex, 10);
+            ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name", categoryId);
+            ViewBag.CategoryDisplayId = categoryId;
+            return View("ProductsByCategory", productsByCategory);
+        }
+
 
     }
 }

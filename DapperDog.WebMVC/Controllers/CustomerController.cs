@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DapperDog.WebMVC.Controllers
 {
+    [Authorize]
     public class CustomerController : Controller
     {
         // GET: Customer
@@ -54,8 +55,8 @@ namespace DapperDog.WebMVC.Controllers
                 CustomerId = customer.CustomerId,
                 FirstName = customer.FirstName,
                 LastName = customer.LastName,
-                PhoneNumber = customer.PhoneNumber,
                 Address = customer.Address,
+                City = customer.City,
                 State = customer.State,
                 Zipcode = customer.Zipcode
             });

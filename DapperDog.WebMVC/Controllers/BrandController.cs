@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DapperDog.WebMVC.Controllers
 {
+    [Authorize]
     public class BrandController : Controller
     {
         // GET: Brand

@@ -10,7 +10,7 @@ namespace DapperDog.Models.Customer
 {
     public class CustomerEdit
     {
-        public int CustomerId { get; set; }
+        public int? CustomerId { get; set; }
         [Required]
         [Display(Name = "First Name:")]
         [MinLength(3, ErrorMessage = "The name needs to be longer.")]
