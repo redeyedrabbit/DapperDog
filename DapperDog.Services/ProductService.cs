@@ -37,6 +37,7 @@ namespace DapperDog.Services
             }
         }
 
+        
         public bool CreateProduct(ProductCreate model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -76,6 +77,8 @@ namespace DapperDog.Services
             }
 
         }
+
+        
 
         public bool UpdateProduct(ProductEdit model)
         {

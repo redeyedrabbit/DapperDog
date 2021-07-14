@@ -158,8 +158,7 @@ namespace DapperDog.WebMVC.Controllers
 
             return RedirectToAction("Index");
         }
-
-
+      
         public ActionResult ViewByCategory(int categoryId, int? page)
         {
             int currentPageIndex = page.HasValue ? page.Value - 1 : 0;
